@@ -13,6 +13,9 @@
 
         //A regular expression is a sequence of characters that forms a search pattern.
         function ProcessString(){
+            //Clear the text before Process
+            document.getElementById("result").value = "";
+
             var inputString = document.getElementById("input").value;
             //regular expressions should be between forward slashes //
             //"\d" matches numbers
@@ -27,5 +30,20 @@
                 }
             }
         }
+
+        /*
+        To find the word "expression" as a whole word, include \b on either sides of the word expression
+        \bexpression\b
+
+        \d indicates to find a digit. To find a 5 digit number
+        \b\d\d\d\d\d\b
+        or
+        \b\d{5}\b
+        or
+        \b[0-9]{5}\b
+
+        To find all words with exactly 5 letters
+        \b[a-zA-Z]{5}\b
+        */
     </script>
 </html>
