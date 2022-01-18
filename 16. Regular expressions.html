@@ -10,7 +10,7 @@
         //JavaScript popup window
         //window.open(URL, name, features, replace)
         //To open a popup window, use window.open() method. All paramters are optional
-        
+
         //A regular expression is a sequence of characters that forms a search pattern.
         function ProcessString(){
             var inputString = document.getElementById("input").value;
@@ -19,9 +19,12 @@
             //"g" - global match on the string
             //"+" - return one or more occurances of numberic digit
             var result = inputString.match(/\d+/g);
-            for(var i = 0; i < result.length; i++)
-            {
+
+            if(result != null){
+                for(var i = 0; i < result.length; i++)
+                {
                 document.getElementById("result").value += result[i]+"\r\n";
+                }
             }
         }
     </script>
