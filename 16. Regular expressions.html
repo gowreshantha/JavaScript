@@ -66,5 +66,20 @@
         console.log("string.split(/\d+/g) = "+string.split(/\d+/g));
         console.log("string.search(/35/) = "+string.search(/35/));
         console.log("string.match(/tom/gi) = "+string.match(/tom/gi));
+
+        //RegExp object
+        //Commonly used RegExp object methods
+        //exec() - returns all the matching records
+        //test() - match in a given string and returns true or false
+        //toString() - returns the string value of regular expression
+        var regexp = new RegExp("\\d+","g");
+        var resultSet;
+        while((resultSet= regexp.exec(string)) != null)
+        {
+            console.log("regexp.exec(string) = "+resultSet);
+        }
+        console.log("regexp.test(string) = "+regexp.test(string));
+        console.log("/\\d+/g.test(string) = "+/\\d+/g.test(string));
+
     </script>
 </html>
