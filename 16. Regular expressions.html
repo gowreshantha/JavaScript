@@ -45,5 +45,26 @@
         To find all words with exactly 5 letters
         \b[a-zA-Z]{5}\b
         */
+
+        /*
+        Regular expressions can be used with the following string methods
+        1. match()
+        2. replace()
+        3. split()
+        4. search()
+
+        modifiers can be used with regular exp to specify teh kind of search
+        g - global search
+        i - Case-insensitive search
+        m - multiline search
+        */
+        var string = "Tom contact number is 10110101001. toM age is 35.";
+        string += "tom contact number is 8957348329. ToM age is 45";
+        console.log("string = "+string);
+        console.log("string.match(/\d+/g) = "+string.match(/\d+/g));
+        console.log("string.replace(/\d+/g, 'XXX') = "+string.replace(/\d+/g, "XXX"));
+        console.log("string.split(/\d+/g) = "+string.split(/\d+/g));
+        console.log("string.search(/35/) = "+string.search(/35/));
+        console.log("string.match(/tom/gi) = "+string.match(/tom/gi));
     </script>
 </html>
