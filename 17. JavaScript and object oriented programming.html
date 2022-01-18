@@ -1,0 +1,42 @@
+<html>
+<body>
+    <h1><b>JavaScript & OOP</b></h1>
+    <h3>check in console</h3>
+</body>
+<script>
+    //OOP - Inheritence, Encapsulation, Abstraction, Polymorphism
+    //In JS we dont have classes. Instead we use functions.
+    //There are 2 ways to create a custom object
+    //1. Constructor function
+    //2. Literal notation
+
+    //Creating an object using constructor fucntion
+    function Employee(firstName, lastName)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.getFullName = function(){
+            return this.firstName+" "+this.lastName;
+        };
+    }
+
+    var employee1 = new Employee("Gowresh", "Nagesh");
+    console.log(employee1.firstName);
+    console.log(employee1.lastName);
+    console.log(employee1.getFullName());
+
+    //Creating an object using Literal notation
+    var employee = {
+        firstName : "Sukanya",
+        lastName : "Shetty",
+        getFullName : function(){
+            return this.firstName+" "+this.lastName;
+        }
+    }
+    console.log(employee.firstName);
+    console.log(employee.lastName);
+    console.log(employee.getFullName());
+
+
+</script>
+</html>
