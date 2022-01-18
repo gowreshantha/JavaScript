@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chapter One</title>
+<script>
+	'use strict'; //If this is not used it will not throw an error when did a mistake of identifiers ex. Line 22
+    alert("Chapter 01");
+	
+	//Strings
+	console.log("Strings : ");
+	var FN = "Gowresh";
+	var LN = "Nagesh";
+	var job = "Module Lead, Test";
+	var stmt = "I am "+FN+" "+LN+" Working as a \""+job+"\"";
+	var usingLiteral = `I am ${FN} ${LN} Working as a ${job}`
+	console.log(stmt);
+	console.log(usingLiteral);
+	
+    //Use of "use strict"
+	let hasACertificate = false;
+	const passTest = true;	
+	//if(passTest) hasCertificate = true;
+	if(hasACertificate) console.log("Congrats for your Certificate");
+	
+	//Arrow Functions
+	function incrementValue(a)
+	{
+	return a + 100;
+	} 
+	//1st
+	const result = (a) => {
+	return a + 100;
+	}
+	//2nd
+	const result1 = a => a + 100;
+	//3rd
+	const result2 = (a) => a + 100;	
+	console.log(result(80)+" "+result1(90)+" "+result2(100));
+	
+	//Arrays
+	const cars = ["Suzuki","Huyndai","Toyota"]
+	console.log(cars);
+	cars.push("Kia")
+	console.log(cars);
+	cars.unshift("Tata");
+	console.log(cars);
+	const carPopped = cars.pop();
+	console.log(cars);
+	console.log("Popped Car : "+carPopped);
+	
+	//Objects
+	const person = {
+	FirstName : "Gowresh",
+	LastName : "Nagesh",
+	Job : "Module Lead",
+	dateOfBirth : 1991,	 
+	printFullName : function(){
+		console.log(this.FirstName+" "+this.LastName);
+	},	
+	CalAge : function(){
+	return 2021 - this.dateOfBirth;
+	}
+	}
+	console.log(person.printFullName());
+	console.log(person.CalAge());
+</script>
+<style>
+body{
+	background-color: aqua;
+}
+</style>
+</head>
+</html>

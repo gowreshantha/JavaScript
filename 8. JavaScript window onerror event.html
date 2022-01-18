@@ -1,0 +1,20 @@
+<html>
+</html>
+<body style="background-color: darkcyan;">
+<img src="NoImage.png" onerror="NoImage()"/>
+</body>
+<script>
+    /*
+    onerror event is raised only when there is an unhandled exception
+    Assign a function to window.onerror event that you want to execute when an error is raised
+    */
+   window.onerror = function(message, url, line)
+   {
+        alert("Message : "+message+"\nURL : "+url+"\nLine :"+line);
+   }
+   NotExistingMethod();
+
+   function NoImage(){
+       alert("There is no such image");
+   }
+</script>

@@ -1,0 +1,30 @@
+<html>
+    <body style="background-color: grey;">
+        <img id ="image" src="/Users/gowresh.n/Documents/Images/1.jpg" width="450px" height="450px"/>
+        <br/>
+        <br/>
+        <input type="button" value="Start Slide Show" onclick="StartSlideShow()"/>
+        <input type="button" value="Stop Slide Show" onclick="StopSlideShow()"/>
+    </body>
+</html>
+<script>
+    var intervalId;
+    //Method to change Image
+    function SlideShow(){
+        var src = document.getElementById("image").getAttribute("src");
+        var currentImage = src.substring(src.lastIndexOf("/")+1,src.lastIndexOf("/")+2);
+        var nextImage = Number(currentImage)+1;
+        if(nextImage > 7)
+            nextImage = 1;
+        document.getElementById("image").setAttribute("src","/Users/gowresh.n/Documents/Images/"+nextImage+".jpg");
+    }
+    
+    function StartSlideShow(){
+        intervalId = setInterval(SlideShow, 1000);
+    }
+
+    function StopSlideShow(){
+        clearInterval(intervalId);
+    }
+
+</script>

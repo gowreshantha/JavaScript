@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <style>
+            .styleClass{
+                display: table-cell;
+                border: 1px solid black;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body style="color: grey;">
+        <input type="button" value="Click" id="btn" 
+        onmouseover="this.style.background='red';this.style.color='yellow'"
+        onmouseout="ChangeColorOnMouseOut()"/>
+
+        <br/>
+        <br/>
+        <table>
+            <tr>
+                <td>
+                    First Name:
+                </td>
+                <td>
+                    <input type="text" id="firstName" onkeyup="ValidateTextField('firstName')" onblur="ValidateTextField('firstName')"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td>
+                    <input type="text" id="lastName" onkeyup="ValidateTextField('lastName')" onblur="ValidateTextField('lastName')"/>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        <input type="button" id="btn2" value="Check if DOM object alert or HTML attribute alert" onclick="HandlerHtml()"/>
+        <br/>
+        <br/>
+        <input type="button" id="btn3" value="Event Listners"/>
+        <input type="button" id="btn4" value="Remove Event Listners" onclick="RemoveEventHandler()"/>
+        <br/>
+        <br/>
+        <input type="button" value="Event Object" onclick="GetEventDetails(event)" onmouseover="GetEventDetails(event)" onmouseout="GetEventDetails(event)"/>
+        <div id="resultSet"></div>
+        <br/>
+        <br/>
+        <div class="styleClass" onclick="alert('Div click handler')">DIV element
+            <span class="styleClass" onclick="alert('Span click handler')">Span element
+                <input type="button" value="Event Bubbling" onclick="alert('Button click handler')"/>
+        </div>
+    </body>
+    <script>
+        //Events : When event occur, we can execute JS or functions in response to those events.
+        //To do this we need to associate JS code or functions to the events
+        //The function that executes in response to an event is called event handler
+        //In JS, there are several ways to assocaite an evnt handler to the event
+        //1. Using the attributes of an HTML tag - Line 3
+        //2. Using DOM object property - Line 57
+        //3. Using special methods 
+
+        function ChangeColorOnMouseOut(){
+            var control = document.getElementById("btn");
+            control.style.background='white';
+            control.style.color='black'
+        }
+
+        function ValidateTextField(controlId){
+            var control = document.getElementById(controlId);
+            if(control.value == "")
+            {
+                control.style.background = "red";
+            }else
+            {
+                control.style.background = "green";
+            }
+        }
+        //Using DOM object property
+        document.getElementById("btn2").onclick = HandlerDOM;
+        function HandlerHtml(){
+            alert("Handler set using HTML attribute");
+        }
+        function HandlerDOM(){
+            alert("Handler set using DOM object property");
+        }
+
+        //Using special methods
+        //addEventListener
+        //remove Event Listener
+        //syntax: element.addEventListener(event,handler,phase)
+        //Note: If phase is false - event bubbling,the event bubbles up from the inner most elemnt to the outer most element in the DOM hierarchy
+        //If phase is trye - event capturing, the opposite happens
+        btn3.addEventListener("mouseover",ChangeBtnColorOnMouseOver);
+        btn3.addEventListener("mouseout",ChangeBtnColorOnMouseOut);
+
+        function ChangeBtnColorOnMouseOver(){
+            this.style.background = "red";
+            this.style.color = "blue";
+        }
+
+        function ChangeBtnColorOnMouseOut(){
+            this.style.background = "white";
+            this.style.color = "black";
+        }
+
+        function RemoveEventHandler(){
+            btn3.removeEventListener("mouseover",ChangeBtnColorOnMouseOver);
+            btn3.removeEventListener("mouseout",ChangeBtnColorOnMouseOut);
+        }
+
+        //Can attach two Handler for an event
+        btn3.addEventListener("click",Handler1);
+        btn3.addEventListener("click",Handler2);
+        function Handler1(){
+            alert("Handler 1");
+        }
+        function Handler2(){
+            alert("Handler 2");
+        }
+
+        //Event Objects
+        //Whenver an event occurs, the relevant data about the even is placed into the event object
+        function GetEventDetails(event){
+            var eventDetails = "Event Name = "+event.type + "<br/> X = "+event.clientX+
+            "<br/>Y = "+event.clientY+"<br/>Target Type = "+event.target.type+
+            "Target Tage Name = "+event.target.tagName;
+            document.getElementById("resultSet").innerHTML = eventDetails;
+        }
+
+        //Event bubbling
+        //Event bubbling process starts with the element that triggered the event and then bubbles up to the containing elements in the hierarchy
+        //Stopping Event bubbling: If you dont want the event to be bubbled up, you can stop it
+        //with event.stopPropagation()
+        
+    </script>
+
+</html>

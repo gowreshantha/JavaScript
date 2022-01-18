@@ -1,0 +1,16 @@
+<script>
+    //JavaScript arguments objects is a local variable available within all functions.
+    //It contains all the function paramters that are paassed to the function & can be indexed like an array.
+    
+    function AddNumbers(){
+
+        console.log("The Count of Numbers passed are "+arguments.length);
+        var sum = 0;
+        for(var i = 0; i <arguments.length; i++)
+            sum = sum + arguments[i];
+        console.log("Sum of Numbers passed is equal to "+sum);
+    }
+    AddNumbers();
+    AddNumbers(10,20);
+    AddNumbers(10,10,10,10,10);
+</script>

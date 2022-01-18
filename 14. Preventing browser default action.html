@@ -1,0 +1,21 @@
+<html>
+<body oncontextmenu="return false">
+    <h1>On this page right click is disabled</h1>
+    <!--Instead of calling Event Object function we can simply - onclick = 'return false'-->
+    <a href="www.google.com" onclick="PreventDefaultAtion(event)">Click on the link will not take you to Google</a>
+    
+</body>
+<script>
+    //Preventing browser default action
+    //oncontextment="return false"
+    //Another way is Using the event object to disable 
+    //event.preventDefault();
+
+    document.oncontextmenu = PreventDefaultAtion;
+
+    function PreventDefaultAtion(event){
+        if(event.preventDefault)
+            event.preventDefault();
+    }
+</script>
+</html>

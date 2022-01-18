@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inline vs External JS</title>
+<style>
+body{
+background-color: lime;
+}
+p{
+font-size : 40px;
+}
+</style>
+</head>
+<body>
+<form id="form1"> 
+    <input type="text" id ="textbox1" placeholder="Enter Number"/>
+    <input type="button" value="Check Number" onclick="ExternalIsEven()"></input>
+</form>
+</body>
+<script src="ExternalJs.js">
+//good practice to place the script tag is before closing <boby> tag so it doesnt block the HTML parser
+//However, modern browsers support async and defer attributes on script but still
+//Inline JS
+function InternalIsEven(){
+var input = document.getElementById("textbox1").value;
+if(isNaN(input))
+{
+    alert("Enter a valid number");
+}else{
+    if(input%2 == 0)
+    alert(input+" is EVEN");
+    else    
+    alert(input+" is ODD");
+}
+}
+</script>
+</html>

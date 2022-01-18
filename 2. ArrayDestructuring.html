@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chapter Two</title>
+<style>
+body{
+background-color: lime;
+}
+p{
+font-size : 40px;
+}
+</style>
+</head>
+<body>
+<p id="test">Chapter Two</p>
+<input type ="text" id="field" placeholder="Enter your First Name"/>
+<label id="lblfield"></label>
+<button id = "submit" onclick="Greet()">SUBMIT</button>
+<label id="greet"/>
+<br/>
+<input type="text" id ="tableField" placeholder="Enter the Number to get Table"/>
+<button id = "tableSubmit" onclick="Table()">SHOW TABLE</button>
+<div id = "table"/>
+<select id="gender" onchange="GenderSelection()">
+	<option>Male</option>
+	<option>Female</option>
+	<option>Not want to disclose</option>
+</select>
+</body>
+<script>
+//DOM - structured representation of an HTML document and Allows JS to access html element and manipulate the style of it.
+document.getElementById("test").innerHTML = "DOM";
+
+function Greet(){
+const Fname = document.getElementById("field")['value'];
+if(Fname.length == 0){
+    document.getElementById('lblfield').innerHTML = "Please Enter your First Name";
+}else{
+	document.getElementById('greet').innerHTML = "Hello! "+Fname;
+}
+}
+
+function Table(){
+const input = document.getElementById("tableField")['value'];
+if(isNaN(input))
+{
+	document.getElementById("table").innerHTML = "Please Enter a Number";
+	document.getElementById("tableField").style.backgroundColor = "red";
+}else
+{
+	const resultSet = [];
+	for(let i = 1 ; i <= 10; i ++)
+	{
+	  resultSet.push(input+" * "+i+" = "+(input*i));
+	}
+	//Array destructuring - values in array "resultSet" is assigned to conts a,b,...
+	const [a,b,c,d,e,f,g,h,i,j] = resultSet;
+	document.getElementById("table").innerHTML = a+"<br/>"+b+"<br/>"+c+"<br/>"+d+"<br/>"+e+"<br/>"+f+"<br/>"+g+"<br/>"+h+"<br/>"+i+"<br/>"+j+"<br/>";
+	console.log(resultSet);
+}
+}
+
+function GenderSelection(){
+	alert("Gender Selected "+gender.value);
+}
+</script>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <title>Arrays</title>
+    <style>
+        body{
+            background-color: aqua;
+        }
+    </style>
+</html>
+<body></body>
+<script>
+    //Arrays
+    var array1 = [];
+    console.log("Length of array1 = [] is euqal to "+array1.length);
+
+    var array2 = new Array(10);
+    console.log("Length of array2 = new Array(10) is equal to "+array2.length);
+
+    //Push and Pop
+    var array3 = []
+    for(var i = 0; i <= 5; i++)
+    {
+        array3.push(i*5);
+    }
+    document.write("Length of array3 is after push is "+array3.length+"<br/>");
+    for(var i = 0; i <6; i ++)
+    {
+        document.write("pop "+i+" "+array3.pop()+"<br\>");
+    }
+    document.write("Length of array3 after pop "+array3.length);
+
+    //Unshift : just like push it adds in first
+    var array4 = [1,2,2];
+    console.log("array4 before unshift is "+array4);
+    array4.unshift(5);
+    console.log("array4 after unshift(5) is "+array4);
+
+    //Shift : just like pop it pops first element
+    console.log("array4 shift() is "+array4.shift());
+    console.log("array4 after shift() is "+array4);
+
+    //includes, indexOf, lastIndexOf
+    console.log("array4 includes(5) "+array4.includes(5));
+    console.log("array4.indexOf(2) is "+array4.indexOf(2));
+    console.log("array4.lastIndexOf(2) is "+array4.lastIndexOf(2));
+
+    //Sort method in Array
+    var array5 = ["Lion","Apple","Cat",];
+    console.log("String array5 before sort is "+array5);
+    array5.sort();
+    console.log("String array5 after sort is "+array5);
+    var array6 = [20,1,10,2,3];
+    console.log("Number array6 before sort is "+array6);
+    //compare function has  2 prams, this function sub a from b and retuns result, if retuns + a is > b. - a is < b, zero a = b
+    array6.sort(function(a,b){return a-b});
+    console.log("Number array6 after sort is "+array6);
+    console.log("Number array6 after reverse is "+array6.reverse());
+
+    /*
+    splice method: Add or remove elements from an array
+    Syntax: array.slice(index, deleteCount, item1,...,itemX)
+    Index: Requierd. Specifies at what position to add or remove items.
+    deleteCount: Required. the number of items to be removed. if set to 0, no items will be removed
+    item1,...itemX: Optional. The new item(s) to be added to the array
+    */
+    var array7 = [1,2,5];
+    console.log("array7 before splice method to add "+array7);
+    array7.splice(2,0,3,4);
+    console.log("array7 after array7.splice(2,0,3,4) is "+array7);
+    var array8 = [1,2,55,67,3];
+    console.log("array8 before splice method to remove "+array8);
+    array8.splice(2,2);
+    console.log("array8 after array8.splice(2,2) is "+array8);
+
+    /*
+    filter methods: 
+    The filter() method creates a new array and populates that array with all the elements
+    that meet the condition specified in a callback function.
+    Syntax: array.filter(callbackFunction[,thisArg])
+    callbackFunction : Required. Function that gets called for each element of the array.If the function returns true, the element is kept otherwise filtered.
+    thisArg: Optional.  An object to which the this keyword can refer in the callbackfn function
+
+    The filter methods calls the callbackfn funcation one time for each element in the array.
+    Callback Function Syntax
+    function callbackFunction(value,index,array)
+    value: The value of the element in the array
+    index: The index position of the element in the array
+    array: The source aray object that contains the element
+    */
+   var array9 = [1,2,3,4,5,6,7,8,9,10];
+   console.log("array9 before filter "+array9);
+   var result = array9.filter(function (value, index, array) {return (value%2) == 0;});
+   console.log("result after array9.filter(function (value, index, array) {return value%2 == 0}) is "+result);
+
+   //Print Unique
+   var array10 = ["Sam","Toby","Andy","Sam","Tom","Tom","Spidy"];
+   console.log("array10 before filter duplicate "+array10);
+   result = array10.filter((value, index, array)=>{ return array.indexOf(value)==index});
+   console.log("result after array10.filter((value, index, array)=>{ return array.indexOf(value)==index}) is "+result);
+
+   //Creating Two dimensional Array in JS
+   var array2D1 = new Array(3);
+   for(var i=0; i < 3; i++)
+        array2D1[i] = new Array(3);
+    
+   //Add two - two dimensional Array and store the result 
+    //1st 2D array
+    var start = 1;
+    for(var i = 0; i < 3; i ++)
+    {
+        for(var j = 0; j < 3; j ++)
+        {
+            array2D1[i][j] = start;
+            start++;
+        }
+    }
+    console.log("First 2D Array is "+array2D1);
+    //2nd 2D array
+    var array2D2 = new Array(3);
+   for(var i=0; i < 3; i ++)
+        array2D2[i] = new Array(3);
+    for(var i = 0; i < 3; i ++)
+    {
+        for(var j = 0; j < 3; j ++)
+        {
+            start--;
+            array2D2[i][j] = start;
+        }
+    }
+    console.log("Second 2D Array is "+array2D2);
+    //result 2D array
+    var result2D = new Array(3);
+    for(var i = 0; i < 3; i ++)
+        result2D[i] = new Array(3);
+    for(var i = 0; i < 3; i ++)
+    {
+        for(var j = 0; j < 3; j++)
+        {
+            result2D[i][j] = array2D1[i][j]+array2D2[i][j];
+        }
+    }
+    console.log("SUM of First and Second 2D array is "+result2D);
+   
+</script>

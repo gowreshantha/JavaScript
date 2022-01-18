@@ -1,0 +1,24 @@
+<html>
+    <body>
+      <input type="text" id="input" style="width: 250px;"/>
+      <br/><br/>
+      <input type="button" value="Process String" onclick="ProcessString()" style="width: 250px;"/>
+      <br/><br/>
+      <textarea id="result" rows="4" cols="30"></textarea>
+    </body>
+    <script>
+        //A regular expression is a sequence of characters that forms a search pattern.
+        function ProcessString(){
+            var inputString = document.getElementById("input").value;
+            //regular expressions should be between forward slashes //
+            //"\d" matches numbers
+            //"g" - global match on the string
+            //"+" - return one or more occurances of numberic digit
+            var result = inputString.match(/\d+/g);
+            for(var i = 0; i < result.length; i++)
+            {
+                document.getElementById("result").value += result[i]+"\r\n";
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body style ="background-color: grey;">
+        <div id ="time"></div>
+        <br/>
+        <input type="button" value="START CLOCK" onclick="StartClock()"/>
+        <input type="button" value="STOP CLOCK" onclick="StopClock()"/>
+        <br/>
+        <br/>
+        <div id = "start-stop"></div>
+    </body>
+    <script>
+
+        //Syntax setInterval(func, delay)
+        setInterval(GetTime, 1000);
+
+        function GetTime(){
+            document.getElementById("time").innerHTML = new Date();
+        }
+       
+        var intervalId;
+        function StartStopTime(){
+            document.getElementById("start-stop").innerHTML = new Date();
+        }
+
+        StartStopTime();
+
+        function StartClock(){
+            intervalId = setInterval(StartStopTime,1000);
+        }
+        
+        function StopClock(){
+            //to stop the setInterval
+            clearInterval(intervalId);
+        }
+
+    </script>
+</html>

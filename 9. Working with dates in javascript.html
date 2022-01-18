@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: whitesmoke;">
+</body>
+<script>
+    //Working with dates in javascript
+    document.write("new Date() = "+"<b>"+new Date()+"</b>");
+
+    document.write("<br/>")
+    //Creatng a specific date object in JavaScript using a date string
+    var dateOfBirth = new Date("September 13, 1991 04:15:00");
+    document.write("new Date(\"September 13, 1991 04:15:00\" = "+"<b>"+dateOfBirth+"</b>");
+
+    document.write("<br/>")
+    document.write(DateFormat(dateOfBirth));
+
+    function DateFormat(date){
+        var day = date.getDate();
+        var month = date.getMonth();
+        var year = date.getFullYear();
+        return day+"/"+month+"/"+year;
+    }
+</script>
+</html>

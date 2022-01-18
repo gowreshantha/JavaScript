@@ -1,0 +1,19 @@
+<!Doctype html>
+<html>
+</html>
+<body style="background-color: crimson;">
+    <input type ="button"  value="CLICK" onclick="alert(incrementClickCount())"/>
+</body>
+<script>
+    //A Closure is an inner function that has access to the outer function's variable in addition to its own variables & global variables.
+    //In simple terms a closure is function inside a function
+    //Example - Every time a button is clicked - increment the click count by 1
+    var incrementClickCount = (function () {
+        var click = 0;
+        console.log("inside outer");
+        return function(){
+            console.log("inside inner");
+            return ++click;
+        }
+    })();
+</script>
