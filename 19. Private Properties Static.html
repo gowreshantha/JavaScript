@@ -15,6 +15,9 @@
             Properties : Encapsulation is one of the pillars of OOP. <br>
             Properties provide encapsulation, If you use public fields you cannot control on what is assigned and returned from that public field. <br>
         </div>
+        <h1>Static Members</h1>
+        <div>
+        </div>
     </body>
     <script>
         function Employee(firstName, lastName){
@@ -77,5 +80,28 @@
         var person = new Person("Gowresh", 30);
         console.log(person.name+"  "+person.age);
         person.age = 101;
+
+        function Circle(radius){
+            
+            this.radius = radius;
+            
+            //static field
+            Circle.Pi = 3.142;
+            Circle.Count = ++Circle.Count || 1;
+
+            this.CalculateArea =  function(){
+                return Circle.Pi * this.radius * this.radius;
+            }
+
+            Circle.GetCount = function(){
+                return Circle.Count;
+            }
+
+        }
+
+        console.log("new Circle(10).CalculateArea() = "+new Circle(10).CalculateArea());
+        console.log("new Circle(50).CalculateArea() = "+new Circle(50).CalculateArea());
+        console.log("Circle.GetCount() =  "+Circle.GetCount());
+
     </script>
 </html>
