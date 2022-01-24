@@ -1,0 +1,81 @@
+<html>
+    <body>
+        <h1>Private members in JS</h1>
+        <div>
+            Privileged Function: Privileged methods are created using "this" keyword and Public methods are created using prototype property of the constructor function <br>
+            Privileged method can access private variables and methods <br>
+            Public methods can call privileged methods but not private methods <br>
+            Like Public methods, Privileged methods are also available outside the contructor function <br>
+            Private fields - Declared using the var keyword inside the object, and can only be accessed by private functions and privileged methods. <br>
+            Public fields - Declared using this keyword and are available outside the object. <br>
+            Private functions - Can be called only by privileged methods
+        </div>
+        <h1>Properties in JS</h1>
+        <div>
+            Properties : Encapsulation is one of the pillars of OOP. <br>
+            Properties provide encapsulation, If you use public fields you cannot control on what is assigned and returned from that public field. <br>
+        </div>
+    </body>
+    <script>
+        function Employee(firstName, lastName){
+            //Public fields
+            this.firstName = firstName;
+            this.lastName = lastName;
+
+            //Private field
+            var privateFullName;
+
+            //Private Function
+            var privateGetFullName = function(){
+                privateFullName = firstName+" "+lastName;
+                return privateFullName;
+            }
+
+            //Privileged Function
+            this.privilegedGetFullName = function() {
+                return privateGetFullName();
+            }
+
+            //Public Function
+            Employee.prototype.publicGetFullName = function() {
+                return this.privilegedGetFullName();
+            }
+        }
+
+        var employee = new Employee("Gowresh","Nagesh");
+        console.log("employee.privilegedGetFullName() = "+employee.privilegedGetFullName());
+        console.log("employee.publicGetFullName() = "+employee.publicGetFullName());
+
+        function Person(name, age){
+            var _name = name;
+            var _age = age;
+
+            Object.defineProperty(this,"age",{
+                get: function(){
+                    return _age;
+                },
+                set: function(value){
+                    if(value < 1 || value > 100){
+                        alert("Inavlid Age");
+                    }else{
+                        _age = value;
+                    }
+                }
+            });
+
+            Object.defineProperty(this,"name",{
+                get: function(){
+                    return _name;
+                },
+                set: function(value){
+                    _name = value;
+                }
+            });
+
+        }
+
+        var person = new Person("Gowresh", 30);
+        console.log(person.name+"  "+person.age);
+        person.age = 101;
+    </script>
+</html>
