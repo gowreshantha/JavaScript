@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <h1>Abstract classes in JavaScript</h1>
+    </body>
+    <script>
+        var Shape = function(){
+            this.shapeName = "None";
+            throw Error("Cannot create an instance of Shape");
+        }
+
+        Shape.prototype.draw = function(){
+            return "Drawing "+this.shapeName;
+        }
+
+        var Circle = function(shapeName){
+            this.shapeName = shapeName;
+        }
+
+        Circle.prototype = Object.create(Shape.prototype);
+        var circleShape = new Circle("Circle");
+        document.write("circleShape.draw() = "+circleShape.draw()+"<br>");
+        document.write("circleShape instanceof Shape = "+(circleShape instanceof Shape));
+    </script>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <h1>Polymorphism in JavaScript</h1>
+    </body>
+    <script>
+        var Shape = function(){}
+        Shape.prototype.draw = ()=>{
+            return "Drawing Generic Shape";
+        }
+
+        var Circle = function(){}
+        Circle.prototype = Object.create(Shape.prototype);
+        Circle.prototype.draw = ()=>{
+            return "Drawing Circle";
+        }
+
+        var Square = function(){}
+        Square.prototype = Object.create(Shape.prototype);
+        Square.prototype.draw = ()=>{
+            return "Drawing Square";
+        }
+
+        var Triangle = function(){}
+        Triangle.prototype = Object.create(Shape.prototype);
+
+        var shapes = [new Shape(), new Circle(), new Square(), new Triangle()];
+        shapes.forEach(function(shape){
+            document.write(shape.draw()+"<br>");
+        });
+  
+    </script>
+</html>

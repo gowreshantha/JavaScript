@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>  
+    <h1>Inheritance in JavaScript</h1>
+</body>
+<script>
+    function Employee(name){
+        this.name = name;
+    }
+
+    Employee.prototype.getName = function(){
+        return this.name;
+    }
+
+    function PermanentEmployee(salary){
+        this.salary = salary;
+    }
+    
+    var employee = new Employee("Gowresh Nagesh");
+    PermanentEmployee.prototype = employee;
+    var permanentEmployeeObject = new PermanentEmployee(90000);
+    console.log("permanentEmployeeObject.getName() = "+permanentEmployeeObject.getName());
+    console.log("permanentEmployeeObject.salary = "+permanentEmployeeObject.salary);
+    console.log("employee instanceof Employee = "+(employee instanceof Employee));
+    console.log("employee instanceof PermanentEmployee = "+(employee instanceof PermanentEmployee));
+    console.log("permanentEmployeeObject instanceof Employee = "+(permanentEmployeeObject instanceof Employee));
+    console.log("permanentEmployeeObject instanceof PermanentEmployee = "+(permanentEmployeeObject instanceof PermanentEmployee));
+    console.log("permanentEmployeeObject.hasOwnProperty('name') = "+permanentEmployeeObject.hasOwnProperty('name'));
+    console.log("permanentEmployeeObject.hasOwnProperty('salary') "+permanentEmployeeObject.hasOwnProperty('salary'));
+   
+</script>
+</html>
