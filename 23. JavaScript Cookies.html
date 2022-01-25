@@ -1,0 +1,53 @@
+<html>
+    <body>
+        <h1>JavaScript Cookies</h1>
+        <div>Why are cookies needed <br>
+            Web applications work on HTTP protocol which is a stateless protocol.<br>
+            This means after web server has processed the client request for a web page, the web page server will not remember anything about the client that made the request. <br>
+        </div>
+        <div>Cookies are small text files that a browser stores in the vistor's computer. <br>
+            A cookie is basically a string of name-value pairs seperated by semi-colons<br>
+            cookie looks like = "color=red;optional attributes" <br>
+            Optional Cookie Attributes<br>
+            <ol>
+                <li>max-age : if you want to create a persistent cookie, i.e a cookie that is not deleted after browser is closed</li>
+                <li>domain: specifies the domain for which the cookie is valid</li>
+                <li>path: path=/ creates a cookie that is valid across all your pages in your website</li>
+                <li>secure: specifies the cookie is secure and is only used over HTTPS protocol which ensures that cookie is always encrypted when transmiting from client to server</li>
+            </ol>
+        </div>
+        <br>
+        <div>Works in FF not CH</div>
+        <br>
+        <select id="Color" onchange="setColor()">
+            <option value="Select Color">Select Color</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+        </select>
+    </body>
+    <script>
+        //Doesnt support in chrome 
+        window.onload = function(){
+            //Read a cookie
+            var cookieString = document.cookie;
+            if(cookieString.length != 0)
+            {
+                var selectedColor = cookieString.split("=");
+                document.getElementById("Color").value = selectedColor[1];
+                document.bgColor = selectedColor[1];
+            }
+            
+        }
+
+        function setColor(){
+            var selectedColor = document.getElementById("Color").value;
+            if(selectedColor != "Select Color")
+            {
+                document.bgColor = selectedColor;
+                //Write a Cookie
+                document.cookie = "color=" + selectedColor +";max-age="+(60 * 60 * 24 * 30)+";";
+            }
+        }
+    </script>
+</html>

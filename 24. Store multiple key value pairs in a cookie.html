@@ -1,0 +1,58 @@
+<html>
+    <body>
+        <h1>Storing multiple key value pairs</h1>
+        <div>It is not possible to store multiple key value pairs in a single cookie<br>
+        Option 1 : Create a custom objecct, serialize the object to a JSON string and store the serialized string in a cookie <br>
+        </div>
+        <br>
+        <br>
+        <table border="1">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="txtName"/></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" id="txtEmail"/></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="text" id="txtGender"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="Set Cookie" onclick="SetCookie()"/>
+                    <input type="button" value="Get Cookie" onclick="GetCookie()"/>
+                    <input type="button" value="Clear" onclick="ClearTextBoxes()"/>
+                </td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        function SetCookie(){
+            var customObject = {};
+            customObject.name = document.getElementById("txtName").value;
+            customObject.email = document.getElementById("txtEmail").value;
+            customObject.gender = document.getElementById("txtGender").value;
+
+            var jsonString = JSON.stringify(customObject);
+            document.cookie = "cookieObject="+jsonString;
+
+        }
+
+        function GetCookie(){
+            var valueArray = document.cookie.split("=");
+            var customObject = JSON.parse(valueArray[1]);
+
+            document.getElementById("txtName").value = customObject.name;
+            document.getElementById("txtEmail").value = customObject.email;
+            document.getElementById("txtGender").value = customObject.gender;
+        }
+
+        function ClearTextBoxes(){
+            document.getElementById("txtName").value = "";
+            document.getElementById("txtEmail").value = "";
+            document.getElementById("txtGender").value = "";
+        }
+    </script>
+</html>
