@@ -1,0 +1,65 @@
+<html>
+    <body>
+        <h1>JavaScript ES6 / ES2015 - [10] Promises</h1>
+        <a href="https://www.youtube.com/watch?v=XJEHuBZQ5dU&list=PLillGF-RfqbZ7s3t6ZInY3NjEOOX7hsBv&index=10" target="_blank">Link to Promise demo<a>
+        <div>
+            <ul id="template">
+
+            </ul>
+        </div>
+    </body>
+    <script>
+        //Simple code for Promise resolve 
+        var promiseSimpleDemo = Promise.resolve("foo");
+        promiseSimpleDemo.then((res)=>console.log(res));
+        
+        //Promise with API
+        function getData(method, url){
+
+            return new Promise(function(resolve, reject){
+                var xhr = new XMLHttpRequest();
+                xhr.open(method,url);
+                xhr.onload = function(){
+                    if(this.status >= 200 && this.status < 300){
+                        resolve(xhr.response);
+                    }else{
+                        reject({
+                            status: this.status,
+                            statusText: this.statusText
+                        });
+                    }
+                };
+                xhr.onerror = function(){
+                    reject({
+                            status: this.status,
+                            statusText: this.statusText
+                        });
+                };
+                xhr.send();
+            });
+        }
+
+        //To print in console
+        getData('GET','https://jsonplaceholder.typicode.com/posts').then((data)=>{
+            console.log(data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+        //To print in webpage
+        getData('GET','https://jsonplaceholder.typicode.com/posts').then((data)=>{
+            let dataRd = JSON.parse(data);
+            let output = '';
+            for(let data of dataRd){
+                output += ` <div>
+                    <h1> ID : ${data.id}</h1>
+                    <p> Title : ${data.title}</p>
+                    </div>`;
+            }
+            document.getElementById("template").innerHTML = output;
+        }).catch((err)=>{
+            console.log(err);
+            document.getElementById("template").innerHTML = err.status+" "+err.statusText;
+        });
+    </script>
+</html>
