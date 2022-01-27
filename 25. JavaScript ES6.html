@@ -85,6 +85,56 @@
         //Number.isFinite()
         //Number.isNaN()
         //Number.isInteger()
+        
+        //Set, Map, WeakSet and WeakMap
+        let array = [10,11,11,30]
+        let mySet = new Set(array);
+        mySet.add("string");
+        mySet.add({a:1, b:2});
+        mySet.delete(30);
+        console.log(mySet.size);
+        console.log(mySet);
+        mySet.forEach(function(value){
+            console.log(value);
+        });
 
+        let myMap = new Map([['a1','Hello'],['b1','Bye']]);
+        myMap.set('c','foo');
+        myMap.delete('a1');
+        console.log(myMap);
+
+        let myWeakSet = new WeakSet();
+        let car1 = {
+            brand: "Toyota",
+            model:"Fortuner"
+        }
+        let car2 = {
+            brand: "Suzuki",
+            model:"Baleno"
+        }
+        let car3 = {
+            brand: "Tata",
+            model: "Harrier"
+        }
+        myWeakSet.add(car1);
+        myWeakSet.add(car2);
+        myWeakSet.add(car3);
+        myWeakSet.delete(car2);
+        console.log(myWeakSet);
+
+        let myWeakMap = new WeakMap();
+        let key1 = {
+            id : 1
+        }
+        let key2 = {
+            id : 2
+        }
+        let key3 = {
+            id : 3
+        }
+        myWeakMap.set(key1, car1);
+        myWeakMap.set(key2, car2);
+        myWeakMap.set(key3, car3);
+        console.log(myWeakMap);
     </script>
 </html>
